@@ -32,30 +32,10 @@ DATA = {
 # }
 
 
-def omlet(request):
+def choose_recipe(request, dish_name):
     servings = int(request.GET.get('servings', 1))
-    context = {'recipe': dict(DATA['omlet'])}
+    context = {'recipe': dict(DATA[dish_name])}
     if servings != 1:
         for ing in context['recipe']:
             context['recipe'][ing] *= servings
-    return render(request, 'calculator/index.html', context)
-
-
-def pasta(request):
-    servings = int(request.GET.get('servings', 1))
-    context = {'recipe': dict(DATA['pasta'])}
-    if servings != 1:
-        for ing in context['recipe']:
-            context['recipe'][ing] *= servings
-
-    return render(request, 'calculator/index.html', context)
-
-
-def buter(request):
-    servings = int(request.GET.get('servings', 1))
-    context = {'recipe': dict(DATA['buter'])}
-    if servings != 1:
-        for ing in context['recipe']:
-            context['recipe'][ing] *= servings
-
     return render(request, 'calculator/index.html', context)
