@@ -14,6 +14,8 @@ class Client(models.Model):
 
 class Car(models.Model):
 
+    objects = models.Manager()
+
     BODY_TYPE_CHOICES = (
         ('sedan', 'Седан'),
         ('hatchback', 'Хэтчбек'),
@@ -62,8 +64,10 @@ class Car(models.Model):
 
 
 class Sale(models.Model):
+    objects = models.Manager()
+
     client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name='sales', null=False)
-    car = models.OneToOneField(Car, on_delete=models.CASCADE, related_name='sales_car', null=False)
+    car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name='sales_car', null=False)
     created_at = models.DateField(auto_now_add=True, null=False)
 
     def __str__(self):
