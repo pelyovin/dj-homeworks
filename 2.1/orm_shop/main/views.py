@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render
 
-from main.models import Car
+from .models import Car
 
 
 def cars_list_view(request):
