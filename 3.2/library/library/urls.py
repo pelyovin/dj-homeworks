@@ -16,12 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.routers import SimpleRouter
+from rest_framework.routers import DefaultRouter
 
 from main.views import (books_list, CreateBookView, BookDetailsView, BookUpdateView,
                         BookDeleteView, OrderViewSet)
 
-router = SimpleRouter()
+router = DefaultRouter()
+router.register('orders', OrderViewSet, basename='orders')
 #зарегистрируйте вьюсет для заказов
 
 
